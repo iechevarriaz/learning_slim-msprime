@@ -36,6 +36,7 @@ T_14 = (st + 4665775) / generation_time
 
 #]
 
+# Demographic history for Cattle
 demographic_events = [
 
     msprime.PopulationParametersChange(
