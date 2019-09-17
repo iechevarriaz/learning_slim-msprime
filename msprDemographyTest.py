@@ -3,6 +3,7 @@ import math
 import pyslim
 import time
 
+#Clock Start
 startFloat = time.process_time()
 start = str(startFloat)
 start2Float = time.perf_counter()
@@ -107,18 +108,19 @@ mu_tree_seq.dump("./DemographyTest.trees")
  #   print("interval = ", tree.interval)
   #  print(tree.draw(format="unicode"))
 
+#Clock End
 end = time.process_time()
 diff = end - startFloat
 CPUtime = str(diff)
-corrCPU = str(end)
+checkCPU = str(end)
 
 end2 = time.perf_counter()
 diff2 = end2 - start2Float
 WallTime = str(diff2)
-corrWall = str(end2)
+checkWall = str(end2)
 print("Elapsed CPU time: " + CPUtime)
 print("Wall-Clock Elapsed time: " + WallTime)
-print("CorroboroCPU" + corrCPU +"  Start: " + start)
-print("CorroboroWall" + corrWall + "  Start2:  " + start2)
+print("CheckCPU" + checkCPU +"  Start: " + start)
+print("CheckWall" + checkWall + "  Start2:  " + start2)
 
 print(mu_tree_seq.get_num_sites(), mu_tree_seq.get_sample_size())
