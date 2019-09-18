@@ -3,10 +3,13 @@ import math
 import pyslim
 import time
 
+# Clock CPU time... 
 startFloat = time.process_time()
 start = str(startFloat)
+# Clock Wall time...
 start2Float = time.perf_counter()
 start2 = str(start2Float)
+
 # Times are provided in years, so we convert into generations.
 generation_time = 5
 st = 20553234
@@ -26,12 +29,7 @@ T_12 = (st + 16775) / generation_time
 T_13 = (st + 165775) / generation_time
 T_14 = (st + 4665775) / generation_time
 
-N_EU0 = 90
-N_A0 = 120
-r_EU = 0.111111
-r_AS = 0.361111
-#N_EU = N_EU0 / math.exp(-r_EU * T_1)
-#N_A = N_A0 / math.exp(-r_AS * T_2)
+
 
 population_configurations = [
     msprime.PopulationConfiguration(
@@ -113,6 +111,8 @@ dd = msprime.DemographyDebugger(
     # migration_matrix=migration_matrix,
     demographic_events=demographic_events1)
 dd.print_history()
+
+# Here you have to indicate the path to the .trees original file created via Slim
 recipe1 = pyslim.load("/home/iechevarriaz/SLiM/build/WholeChromosome90max3gen.trees").simplify()
 
 print(recipe1.get_sequence_length())
@@ -130,8 +130,11 @@ tree_sequence = msprime.simulate(   #sample_size= 12,
                                     #migration_matrix=migration_matrix,
                                     demographic_events=demographic_events1,
                                     random_seed= 248
-                                )
+                                ) 
+
+# Overlay neutral mutations after simulation
 mu_tree_seq = msprime.mutate(tree_sequence, rate= 1e-8, random_seed=786, keep=False)
+
 #tree = mu_tree_seq.first()
 #print(tree.draw(format="unicode"))
 
@@ -144,11 +147,14 @@ mu_tree_seq.dump("./HolsteinCattleTestcon90indWholeChrom90max.trees")
     print("interval = ", tree.interval)
     print(tree.draw(format="unicode"))
 """
+
+# Clock CPU time
 end = time.process_time()
 diff = end - startFloat
 CPUtime = str(diff)
 corrCPU = str(end)
 
+# Clock Wall Time
 end2 = time.perf_counter()
 diff2 = end2 - start2Float
 WallTime = str(diff2)
