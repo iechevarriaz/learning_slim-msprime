@@ -10,7 +10,7 @@ start = str(startFloat)
 start2Float = time.perf_counter()
 start2 = str(start2Float)
 
-# Times are provided in years, so we convert into generations.
+# If times are provided in years, we convert into generations.
 generation_time = 5
 st = 20553234
 T_0= st / generation_time
@@ -71,6 +71,8 @@ demographic_events = [
         time=T_14, growth_rate=-0.0, population_id=0),
 
 ]
+
+# For times provided directly in generations we use "demographic_events1"... Starting from the last generation left in SLiM...(recapitation)
 demographic_events1 = [
 
     #msprime.PopulationParametersChange(
