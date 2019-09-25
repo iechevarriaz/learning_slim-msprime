@@ -31,13 +31,7 @@ T_14 = (st + 4665775) / generation_time
 
 
 
-population_configurations = [
-    msprime.PopulationConfiguration(
-        sample_size=10, initial_size=90),
-    msprime.PopulationConfiguration(
-        sample_size=10, initial_size=100),
-
-]
+# Demographic events for Cattle
 
 demographic_events = [
 
